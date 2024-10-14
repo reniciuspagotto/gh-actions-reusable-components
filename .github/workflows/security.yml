@@ -4,7 +4,6 @@ on:
   workflow_call:
     inputs:
       image_name:
-        description: 'Image name'
         required: true
 
 jobs:
@@ -26,6 +25,8 @@ jobs:
           sha=$(gh api -H "${headers}" "${endpoint}" | jq --raw-output "${jqFilter}")
           echo "Trivy DB sha256:${sha}"
           echo "sha=${sha}" >> $GITHUB_OUTPUT
+        outputs:
+          sha: ${{ steps.trivy-db.outputs.sha }}
 
       - uses: actions/cache@v3
         with:
