@@ -39,7 +39,7 @@ jobs:
       - name: Trivy Scanner | Dockerfile
         uses: aquasecurity/trivy-action@0.20.0
         with:
-          image-ref: '${{ inputs.image_name }}:${{ github.sha }}'
+          image-ref: ${{ inputs.image_name }}:${{ github.sha }}
           format: 'table'
           exit-code: '0'
           ignore-unfixed: true
