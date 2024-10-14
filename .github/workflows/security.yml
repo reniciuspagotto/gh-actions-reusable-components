@@ -18,7 +18,7 @@ jobs:
       - name: Check Trivy DB sha
         id: trivy-db 
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ github.token }}
         run: |
           endpoint='/orgs/aquasecurity/packages/container/trivy-db/versions'
           headers='Accept: application/vnd.github+json'
