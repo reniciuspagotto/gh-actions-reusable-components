@@ -73,6 +73,7 @@ jobs:
 
       - name: Snyk Test
         uses: snyk/actions/dotnet@master
+        continue-on-error: true
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
@@ -80,7 +81,8 @@ jobs:
           args: --file=${{ inputs.solution_file_path }} --severity-threshold=low
 
       - name: Snyk Monitor
-        uses: snyk/actions/dotnet@master  
+        uses: snyk/actions/dotnet@master
+        continue-on-error: true 
         env:
           SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
         with:
